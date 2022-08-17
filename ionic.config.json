@@ -1,0 +1,7 @@
+{
+  "name": "PokeTienda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

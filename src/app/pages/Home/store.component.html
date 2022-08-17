@@ -1,0 +1,41 @@
+<ion-content>
+  <app-category (categoriaSeleccionada)="selectedCategory($event)"></app-category>
+  <div *ngIf="products.length > 0">
+    <ion-searchbar color="danger" (ionChange)="onSearch($event)" debounce="500"></ion-searchbar>
+    <div [hidden]="!noFounded">
+      <ion-toolbar>
+        No founded items
+      </ion-toolbar>
+    </div>
+    <ion-card *ngFor="let product of products">
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="8">
+            <ion-card-subtitle>#{{product.id}}</ion-card-subtitle>
+            <ion-card-title>{{product.name | titlecase}}</ion-card-title>
+            <ion-card-subtitle>{{product.cost| number}}$</ion-card-subtitle>
+            <ion-card-subtitle>
+              <ion-input type="number" min="1" value="1" #inputAmount></ion-input>
+            </ion-card-subtitle>
+          </ion-col>
+          <ion-col size="4">
+            <ion-img src="{{product.sprite}}"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card-subtitle>
+              <ion-button (click)="addCart(product,inputAmount)" fill="outline">
+                <ion-icon name="bag-add-outline"></ion-icon>
+              </ion-button>
+            </ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreProducts($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

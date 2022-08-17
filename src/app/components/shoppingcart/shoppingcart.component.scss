@@ -1,0 +1,22 @@
+.ion-text-bold {
+    font-weight: bold;
+}
+
+.ion-border ion-row:first-child {
+    border: 1px solid;
+}
+
+.ion-border ion-row:not(:first-child) {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+.ion-border ion-row ion-col:not(:last-child) {
+    border-right: 1px solid;
+}
+
+.header-blue {
+    background: #82cef3;
+    color: white;
+}

@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="body">
+    <div class="payment">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <ion-item class="ancho">
+          <ion-input disabled value="Total: {{totalPrice | number}}$"></ion-input>
+        </ion-item>
+        <ion-item class="ancho">
+          <ion-label position="floating">Firt name</ion-label>
+          <ion-input formControlName="firstName"></ion-input>
+        </ion-item>
+        <ion-item class="ancho">
+          <ion-label position="floating">Last name</ion-label>
+          <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
+        <ion-item class="ancho">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="ancho">
+          <ion-label position="floating">Address</ion-label>
+          <ion-input formControlName="address"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button type="submit" color="danger" class="ancho button" [disabled]="contactForm.invalid">
+          Make Payment!
+        </ion-button>
+      </form>
+    </div>
+  </div>

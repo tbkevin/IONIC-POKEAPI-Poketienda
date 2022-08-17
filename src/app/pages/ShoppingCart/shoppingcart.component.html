@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="shoppingCart.length > 0">
+    <ion-grid class="ion-border">
+      <ion-row class="header-blue ">
+        <ion-col size="2" class="ion-text-bold"> Img </ion-col>
+        <ion-col class="ion-text-bold"> Name </ion-col>
+        <ion-col class="ion-text-bold"> Price </ion-col>
+        <ion-col class="ion-text-bold"> Amount </ion-col>
+        <ion-col size="1" class="ion-text-bold"></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of shoppingCart">
+        <ion-col size="2">
+          <img src="{{item.product.sprite}}" alt="">
+        </ion-col>
+        <ion-col>{{item.product.name | titlecase}}</ion-col>
+        <ion-col>{{ item.product.cost| number}}</ion-col>
+        <ion-col>
+          {{ item.amount }}
+        </ion-col>
+        <ion-col size="1">
+          <ion-icon name="close-circle" (click)="deleteElement(item)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <br>
+          Total: {{totalPrice|number}}$
+        </ion-col>
+        <ion-col>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button color="primary" fill="outline" (click)="makePayment()">
+            <ion-icon name="cash-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="shoppingCart.length===0">
+    <ion-toolbar class="ion-text-bold">
+      There's no yet items in the shopping cart. Go Store!
+    </ion-toolbar>
+  </div>
+
+</ion-content>
